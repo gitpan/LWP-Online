@@ -3,19 +3,20 @@ NAME
 
 SYNOPSIS
       use LWP::Online 'online';
-  
-      # "Is the internet working?"
+      
+  # "Is the internet working?"
       die "NO INTARWWEB!!!" unless online();
-  
-      # The above means something like this
+      
+  # The above means something like this
       unless ( online('http') ) {
           die "No basic http access to the web";
       }
-  
-      # Special syntax for use in test scripts that need
+      
+  # Special syntax for use in test scripts that need
       # "real" access to the internet. Scripts will automatically
       # skip if connection fails.
       use LWP::Online ':skip_all';
+      use Test::More tests => 4; #after LWP::Online
 
 DESCRIPTION
     This module attempts to answer, as accurately as it can, one of the
@@ -111,8 +112,8 @@ FUNCTIONS
   online
       # Default check (uses http)
       online() or die "No Internet";
-  
-      # The above is equivalent to
+      
+  # The above is equivalent to
       online('http') or die "No Internet";
 
     The importable online function is the main functionality provided by
@@ -182,7 +183,7 @@ SEE ALSO
     LWP::Simple
 
 COPYRIGHT
-    Copyright 2006 - 2008 Adam Kennedy.
+    Copyright 2006 - 2011 Adam Kennedy.
 
     This program is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
